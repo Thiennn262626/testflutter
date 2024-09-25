@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testflutter/views/pages/shop/widgets/quantity_control.dart';
 
 class ProductItemWidget extends StatelessWidget {
   final String productName;
@@ -6,9 +7,6 @@ class ProductItemWidget extends StatelessWidget {
   final String productPrice;
   final String unit;
   final int quantity;
-  final VoidCallback onAdd;
-  final VoidCallback onRemove;
-  final VoidCallback onHandleReslove;
 
   const ProductItemWidget({
     super.key,
@@ -17,9 +15,6 @@ class ProductItemWidget extends StatelessWidget {
     required this.productPrice,
     required this.unit,
     required this.quantity,
-    required this.onAdd,
-    required this.onRemove,
-    required this.onHandleReslove,
   });
 
   @override
@@ -73,28 +68,7 @@ class ProductItemWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           // Quantity Selector and Cart Button
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.remove, size: 16),
-                    onPressed: onRemove,
-                  ),
-                  Text('$quantity'), // Hiển thị số lượng sản phẩm
-                  IconButton(
-                    icon: const Icon(Icons.add, size: 16),
-                    onPressed: onAdd,
-                  ),
-                ],
-              ),
-              IconButton(
-                icon: const Icon(Icons.shopping_cart, color: Colors.red),
-                onPressed: onHandleReslove,
-              ),
-            ],
-          ),
+          const QuantityControl(),
         ],
       ),
     );
